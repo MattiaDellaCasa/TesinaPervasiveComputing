@@ -4,6 +4,8 @@ import json
 import time
 from google.cloud import pubsub_v1
 from google.auth.exceptions import DefaultCredentialsError
+import zipfile
+import pandas as pd
 
 # --- CONFIGURAZIONE ---
 PROJECT_ID = "tesinapervasivecloud"  # Sostituisci col tuo Project ID
@@ -34,6 +36,7 @@ def publish_message(payload: dict):
 
 # --- ESEMPIO DI UTILIZZO ---
 if __name__ == "__main__":
+    with zipfile.ZipFile("")
     for i in range(5):
         msg = {"id": i, "value": i * 10, "note": "ciao dal client"}
         publish_message(msg)
