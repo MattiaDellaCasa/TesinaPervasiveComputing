@@ -36,7 +36,7 @@ def publish_message(payload: dict):
 
 # --- ESEMPIO DI UTILIZZO ---
 if __name__ == "__main__":
-    with zipfile.ZipFile("DB.csv.zip") as z:
+    with zipfile.ZipFile("DB.zip") as z:
         with open z.open("DB.csv") as f:
             df = pd.read_csv(f)
     print(df.head)
