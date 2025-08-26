@@ -38,15 +38,13 @@ def publish_message(payload: dict):
 if __name__ == "__main__":
     import zipfile
     import pandas as pd
-    # Nome del file zip
     zip_filename = "DB.zip"
-    # Nome del file CSV dentro lo zip
     csv_filename = "DB.csv"
-    # Apri il file zip e leggi il CSV
     with zipfile.ZipFile(zip_filename, "r") as z:
         with z.open(csv_filename) as f:
-            df = pd.read_csv(f)  # Carica in un DataFrame pandas
-        publish_message(df.head)
+            df = pd.read_csv(f)
+    data_rows = df.values.tolist()
+    publish_message(data_rows)
     for i in range(5):
         msg = {"id": i, "value": i * 10, "note": "ciao dal client"}
         publish_message(msg)
