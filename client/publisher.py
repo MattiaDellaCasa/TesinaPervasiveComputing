@@ -10,7 +10,7 @@ import pandas as pd
 # --- CONFIGURAZIONE ---
 PROJECT_ID = "tesinapervasivecloud"  # Sostituisci col tuo Project ID
 TOPIC_ID = "mining-data"
-CREDENTIALS_PATH = r"C:\Users\utente\Documents\TesinaPervasiveComputing\tesinapervasivecloud-2add42c1f190.json"
+CREDENTIALS_PATH = r"C:\Users\utente\TesinaPervasiveComputing\tesinapervasivecloud-2add42c1f190.json"
 
 # Imposta la variabile d'ambiente per le credenziali
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = CREDENTIALS_PATH
