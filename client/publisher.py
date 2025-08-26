@@ -36,9 +36,17 @@ def publish_message(payload: dict):
 
 # --- ESEMPIO DI UTILIZZO ---
 if __name__ == "__main__":
-    with zipfile.ZipFile("DB.zip") as z:
-        with open z.open("DB.csv") as f:
-            df = pd.read_csv(f)
+    import zipfile
+import pandas as pd
+# Nome del file zip
+zip_filename = "DB.zip"
+# Nome del file CSV dentro lo zip
+csv_filename = "DB.csv"
+# Apri il file zip e leggi il CSV
+with zipfile.ZipFile(zip_filename, "r") as z:
+    with z.open(csv_filename) as f:
+        df = pd.read_csv(f)  # Carica in un DataFrame pandas
+        print(df.head())     # Mostra le prime righe
     print(df.head)
     for i in range(5):
         msg = {"id": i, "value": i * 10, "note": "ciao dal client"}
