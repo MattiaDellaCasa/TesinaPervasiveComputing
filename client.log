@@ -1,0 +1,2 @@
+/Users/fabio/Desktop/progetto-mining/mining-monitor/mqtt_client.py:14: DeprecationWarning: Callback API version 1 is deprecated, update to latest version
+  self.client = mqtt.Client()
