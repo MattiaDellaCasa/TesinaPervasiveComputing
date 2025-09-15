@@ -1,0 +1,20 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Installa dipendenze minime
+RUN apt-get update && apt-get install -y \
+    && rm -rf /var/lib/apt/lists/*
+
+# Installa dipendenze Python
+COPY requirements_client.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia solo i file necessari per il client
+COPY mqtt_client.py ./
+
+# Crea directory per i dati
+RUN mkdir -p /app/data
+
+# Comando di default
+CMD ["python", "mqtt_client.py", "--broker", "localhost", "--interval", "20"]

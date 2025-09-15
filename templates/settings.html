@@ -1,0 +1,322 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap 
+align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Impostazioni Sistema</h1>
+</div>
+
+<div class="row justify-content-center">
+    <!-- Configurazione Soglia Allerte -->
+    <div class="col-lg-8 col-md-10 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-bell"></i> Configurazione Allerte
+            </div>
+            <div class="card-body">
+                <form id="threshold-form">
+                    <div class="mb-3">
+                        <label class="form-label">Soglia % Silica per Allerte</label>
+                        <input type="number" class="form-control" id="threshold" 
+                               value="{{ threshold }}" step="0.1" min="0" max="10">
+                        <div class="form-text">Valori sopra questa soglia genereranno allerte email</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Salva Configurazione
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gestione Email Notifications -->
+    <div class="col-lg-8 col-md-10 mb-4">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span><i class="fas fa-envelope"></i> Gestione Email Notifiche</span>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="email-enabled" checked>
+                    <label class="form-check-label" for="email-enabled">Abilitate</label>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Form aggiunta email -->
+                <form id="email-form" class="mb-4">
+                    <div class="row g-2">
+                        <div class="col-md-8">
+                            <input type="email" class="form-control" id="email-input" 
+                                   placeholder="Inserisci indirizzo email" required>
+                            <div class="invalid-feedback">
+                                Inserisci un indirizzo email valido
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="fas fa-plus"></i> Aggiungi Email
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+                <!-- Lista email -->
+                <div class="mb-3">
+                    <label class="form-label">Email configurate:</label>
+                    <div id="email-list" class="border rounded p-3" style="min-height: 100px; background-color: #f8f9fa;">
+                        <div id="email-list-empty" class="text-muted text-center">
+                            <i class="fas fa-inbox"></i><br>
+                            Nessuna email configurata
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Test email -->
+                <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-outline-info" id="test-email-btn">
+                        <i class="fas fa-paper-plane"></i> Invia Email di Test
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" id="load-emails-btn">
+                        <i class="fas fa-sync"></i> Carica Email Salvate
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast per Notifiche -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="success-toast" class="toast" role="alert">
+        <div class="toast-header">
+            <i class="fas fa-check-circle text-success me-2"></i>
+            <strong class="me-auto">Successo</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body" id="success-message">
+            Operazione completata con successo
+        </div>
+    </div>
+    
+    <div id="error-toast" class="toast" role="alert">
+        <div class="toast-header">
+            <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+            <strong class="me-auto">Errore</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body" id="error-message">
+            Si è verificato un errore
+        </div>
+    </div>
+</div>
+
+<script>
+let emailList = [];
+
+function showToast(type, message) {
+    const toastElement = document.getElementById(`${type}-toast`);
+    const messageElement = document.getElementById(`${type}-message`);
+    messageElement.textContent = message;
+    const toast = new bootstrap.Toast(toastElement);
+    toast.show();
+}
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+function renderEmailList() {
+    const container = document.getElementById('email-list');
+    const emptyMessage = document.getElementById('email-list-empty');
+    
+    if (emailList.length === 0) {
+        emptyMessage.style.display = 'block';
+        container.querySelectorAll('.email-item').forEach(item => item.remove());
+    } else {
+        emptyMessage.style.display = 'none';
+        
+        // Rimuovi elementi esistenti
+        container.querySelectorAll('.email-item').forEach(item => item.remove());
+        
+        // Aggiungi nuovi elementi
+        emailList.forEach((email, index) => {
+            const emailItem = document.createElement('div');
+            emailItem.className = 'email-item d-flex justify-content-between align-items-center mb-2 p-2 border rounded bg-white';
+            emailItem.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-envelope text-primary me-2"></i>
+                    <span>${email}</span>
+                </div>
+                <button class="btn btn-outline-danger btn-sm" onclick="removeEmail(${index})">
+                    <i class="fas fa-trash"></i>
+                </button>
+            `;
+            container.appendChild(emailItem);
+        });
+    }
+    
+    // Salva automaticamente la lista aggiornata
+    saveEmailList();
+}
+
+function addEmail(email) {
+    if (!validateEmail(email)) {
+        showToast('error', 'Indirizzo email non valido');
+        return false;
+    }
+    
+    if (emailList.includes(email)) {
+        showToast('error', 'Email già presente nella lista');
+        return false;
+    }
+    
+    emailList.push(email);
+    renderEmailList();
+    showToast('success', `Email ${email} aggiunta con successo`);
+    return true;
+}
+
+function removeEmail(index) {
+    const removedEmail = emailList[index];
+    emailList.splice(index, 1);
+    renderEmailList();
+    showToast('success', `Email ${removedEmail} rimossa`);
+}
+
+function saveEmailList() {
+    const isEnabled = document.getElementById('email-enabled').checked;
+    
+    fetch('/api/settings/email', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            enabled: isEnabled,
+            recipients: emailList.join(','),
+            frequency: 'immediate'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (!data.success) {
+            console.error('Errore salvataggio email:', data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Errore salvataggio email:', error);
+    });
+}
+
+function loadEmailList() {
+    fetch('/api/settings/current')
+    .then(response => response.json())
+    .then(data => {
+        if (data.success && data.email) {
+            const recipients = data.email.recipients || [];
+            emailList = Array.isArray(recipients) ? recipients : 
+                       (typeof recipients === 'string' ? recipients.split(',').filter(e => e.trim()) : []);
+            
+            const isEnabled = data.email.enabled !== false;
+            document.getElementById('email-enabled').checked = isEnabled;
+            
+            renderEmailList();
+            showToast('success', `Caricate ${emailList.length} email dalla configurazione`);
+        }
+    })
+    .catch(error => {
+        console.error('Errore caricamento email:', error);
+        showToast('error', 'Errore nel caricamento delle email salvate');
+    });
+}
+
+// Event Listeners
+document.getElementById('threshold-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const threshold = document.getElementById('threshold').value;
+    
+    fetch('/api/settings/threshold', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({threshold: parseFloat(threshold)})
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showToast('success', 'Configurazione soglia salvata con successo!');
+        } else {
+            showToast('error', data.error || 'Errore nel salvataggio');
+        }
+    })
+    .catch(error => {
+        showToast('error', 'Errore di comunicazione con il server');
+    });
+});
+
+document.getElementById('email-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const emailInput = document.getElementById('email-input');
+    const email = emailInput.value.trim();
+    
+    if (addEmail(email)) {
+        emailInput.value = '';
+        emailInput.classList.remove('is-invalid');
+    } else {
+        emailInput.classList.add('is-invalid');
+    }
+});
+
+document.getElementById('email-enabled').addEventListener('change', function() {
+    saveEmailList();
+    const isEnabled = this.checked;
+    showToast('success', `Notifiche email ${isEnabled ? 'abilitate' : 'disabilitate'}`);
+});
+
+document.getElementById('test-email-btn').addEventListener('click', function() {
+    if (emailList.length === 0) {
+        showToast('error', 'Nessuna email configurata per il test');
+        return;
+    }
+    
+    fetch('/api/settings/test-email', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({recipients: emailList})
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showToast('success', `Email di test inviata a ${emailList.length} destinatario/i`);
+        } else {
+            showToast('error', data.error || 'Errore nell\'invio email di test');
+        }
+    })
+    .catch(error => {
+        showToast('error', 'Errore nella richiesta di test email');
+    });
+});
+
+document.getElementById('load-emails-btn').addEventListener('click', loadEmailList);
+
+// Caricamento iniziale
+document.addEventListener('DOMContentLoaded', function() {
+    loadEmailList();
+});
+</script>
+
+<style>
+.email-item {
+    transition: all 0.3s ease;
+}
+
+.email-item:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-check-input:checked {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.toast-container {
+    z-index: 1055;
+}
+</style>
+{% endblock %}
