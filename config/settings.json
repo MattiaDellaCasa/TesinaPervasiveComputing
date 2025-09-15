@@ -1,0 +1,13 @@
+{
+  "threshold": 1.5,
+  "email": {
+    "enabled": true,
+    "recipients": [
+      "mattia1.dellacasa@gmail.com",
+      "fabiofiorini96@gmail.com",
+      "gasein999@gmail.com"
+    ],
+    "frequency": "immediate"
+  },
+  "last_update": "2025-09-15T23:22:26.083988"
+}

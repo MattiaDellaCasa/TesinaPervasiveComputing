@@ -1,0 +1,419 @@
+/Users/fabio/Desktop/progetto-mining/mining-monitor/main.py:78: DeprecationWarning: Callback API version 1 is deprecated, update to latest version
+  self.mqtt_client = mqtt.Client()
+Settings caricati: soglia=1.5
+Connesso a Firestore
+Nessun dato vecchio da eliminare
+Client MQTT configurato per localhost:1883
+ML Predictor non disponibile: __init__() got an unexpected keyword argument 'db'
+Avvio server Flask su 0.0.0.0:8080
+Soglia allerta attuale: 1.5%
+Email notifiche: abilitato
+Connesso al broker MQTT
+ * Serving Flask app 'main' (lazy loading)
+ * Environment: development
+ * Debug mode: on
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.1.3:8080/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:21:55] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:01] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:14] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:14] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:15] "GET /api/charts/realtime HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:20] "GET /predictions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:20] "GET /api/settings/current HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:20] "GET /api/settings/current HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:20] "GET /api/charts/prediction?hours=1 HTTP/1.1" 200 -
+Ricevuti dati: riga 0
+Ricevuti dati: riga 1
+Ricevuti dati: riga 2
+Ricevuti dati: riga 3
+Ricevuti dati: riga 4
+Ricevuti dati: riga 5
+Ricevuti dati: riga 6
+Ricevuti dati: riga 7
+Ricevuti dati: riga 8
+Ricevuti dati: riga 9
+Ricevuti dati: riga 10
+Caricati 11 campioni da Firestore in ordine cronologico di invio
+Range row_index: da 0 a 10
+DEBUG: latest_data = % Silica Concentrate                                  1.31
+Ore Pulp pH                                        10.0746
+Flotation Column 04 Air Flow                       295.096
+Flotation Column 02 Air Flow                       250.818
+date                                   2017-03-10 01:00:00
+Flotation Column 04 Level                          458.005
+Ore Pulp Flow                                      396.533
+Flotation Column 01 Level                          456.495
+% Silica Feed                                        16.98
+Flotation Column 03 Level                          466.332
+Flotation Column 05 Air Flow                         306.4
+Flotation Column 05 Level                          455.493
+Flotation Column 02 Level                           438.06
+Amina Flow                                         561.951
+Flotation Column 07 Air Flow                       246.797
+% Iron Feed                                           55.2
+Flotation Column 07 Level                          452.663
+Starch Flow                                        3148.05
+Flotation Column 03 Air Flow                       250.225
+Flotation Column 01 Air Flow                       249.236
+Flotation Column 06 Level                           448.05
+% Iron Concentrate                                   66.91
+Flotation Column 06 Air Flow                       250.203
+Ore Pulp Density                                      1.74
+timestamp                       2025-09-15 23:22:14.569623
+row_index                                               10
+doc_id                                DbBXnRExkigH5m8wg1rd
+Name: 10, dtype: object
+DEBUG: % Silica Concentrate = 1.31
+DEBUG: stats = {'current_silica': 1.31, 'avg_silica': 1.3100000000000003, 'std_silica': 2.3288234633381846e-16, 'max_silica': 1.31, 'min_silica': 1.31, 'current_ph': 10.0746, 'current_iron': 55.2, 'data_points': 11, 'last_row_index': 10, 'current_alerts': 0, 'alert_threshold': 4.0, 'status': 'CLOUD_DATA_OK'}
+Ricevuti dati: riga 11
+Ricevuti dati: riga 12
+Ricevuti dati: riga 13
+Ricevuti dati: riga 14
+Ricevuti dati: riga 15
+DEBUG PREDICTION: Avvio creazione grafici predizioni per 1 ore
+Caricati 16 campioni da Firestore in ordine cronologico di invio
+Range row_index: da 0 a 15
+DEBUG PREDICTION: Caricati 16 campioni dal cloud
+DEBUG PREDICTION: Ultimo row_index: 15, Soglia: 4.0
+DEBUG PREDICTION: Genero 3 predizioni future
+DEBUG PREDICTION: Predizione fallback per indice 16: 1.2586426166575724
+DEBUG PREDICTION: Predizione fallback per indice 17: 1.1128503239424092
+DEBUG PREDICTION: Predizione fallback per indice 18: 1.079961131008574
+DEBUG PREDICTION: Creato DataFrame predizioni con 3 righe
+DEBUG PREDICTION: Allerte previste: 0/3 (soglia: 4.0%)
+DEBUG PREDICTION: Aggiungo 16 dati storici al grafico
+DEBUG PREDICTION: Aggiungo 3 predizioni al grafico
+DEBUG PREDICTION: Statistiche predizioni: {'avg_prediction': 1.1504846905361852, 'max_prediction': 1.2586426166575724, 'min_prediction': 1.079961131008574, 'alerts_predicted': 0, 'avg_confidence': 90.0, 'prediction_horizon': '3 righe future', 'based_on_cloud_data': True, 'last_real_value': 1.31, 'last_row_index': 15, 'alert_threshold': 4.0, 'data_source': 'CLOUD_ONLY'}
+DEBUG PREDICTION: Conversione JSON del grafico completata
+DEBUG PREDICTION: Ritorno risultati completi
+Ricevuti dati: riga 16
+Ricevuti dati: riga 17
+Ricevuti dati: riga 18
+DEBUG PREDICTION: Avvio creazione grafici predizioni per 30 ore
+Caricati 19 campioni da Firestore in ordine cronologico di invio
+Range row_index: da 0 a 18
+DEBUG PREDICTION: Caricati 19 campioni dal cloud
+DEBUG PREDICTION: Ultimo row_index: 18, Soglia: 4.0
+DEBUG PREDICTION: Genero 90 predizioni future
+DEBUG PREDICTION: Predizione fallback per indice 19: 1.435744501390001
+DEBUG PREDICTION: Predizione fallback per indice 20: 1.1727579494979337
+DEBUG PREDICTION: Predizione fallback per indice 21: 1.279827695358953
+DEBUG PREDICTION: Predizione fallback per indice 22: 1.3773248162764835
+DEBUG PREDICTION: Predizione fallback per indice 23: 1.3049085882110627
+DEBUG PREDICTION: Predizione fallback per indice 24: 1.2846733374313986
+DEBUG PREDICTION: Predizione fallback per indice 25: 1.2323794842057803
+DEBUG PREDICTION: Predizione fallback per indice 26: 0.9785696307706607
+DEBUG PREDICTION: Predizione fallback per indice 27: 0.9784642914955053
+DEBUG PREDICTION: Predizione fallback per indice 28: 0.9204032426231644
+DEBUG PREDICTION: Predizione fallback per indice 29: 1.0441725097248313
+DEBUG PREDICTION: Predizione fallback per indice 30: 1.337617528388011
+DEBUG PREDICTION: Predizione fallback per indice 31: 0.9865619398012284
+DEBUG PREDICTION: Predizione fallback per indice 32: 1.2517014838538891
+DEBUG PREDICTION: Predizione fallback per indice 33: 1.263654482936599
+DEBUG PREDICTION: Predizione fallback per indice 34: 1.1971879193096664
+DEBUG PREDICTION: Predizione fallback per indice 35: 1.341652447946495
+DEBUG PREDICTION: Predizione fallback per indice 36: 1.0276372404160417
+DEBUG PREDICTION: Predizione fallback per indice 37: 1.281292170249264
+DEBUG PREDICTION: Predizione fallback per indice 38: 1.3708433440387373
+DEBUG PREDICTION: Predizione fallback per indice 39: 1.2279684301071818
+DEBUG PREDICTION: Predizione fallback per indice 40: 1.0607139029603487
+DEBUG PREDICTION: Predizione fallback per indice 41: 1.110600186465355
+DEBUG PREDICTION: Predizione fallback per indice 42: 1.378217450461537
+DEBUG PREDICTION: Predizione fallback per indice 43: 1.2780911623342
+DEBUG PREDICTION: Predizione fallback per indice 44: 1.4903837586088593
+DEBUG PREDICTION: Predizione fallback per indice 45: 1.0863633352216997
+DEBUG PREDICTION: Predizione fallback per indice 46: 1.2223233839030987
+DEBUG PREDICTION: Predizione fallback per indice 47: 0.781443306891012
+DEBUG PREDICTION: Predizione fallback per indice 48: 1.2821017095935618
+DEBUG PREDICTION: Predizione fallback per indice 49: 1.3696851767590281
+DEBUG PREDICTION: Predizione fallback per indice 50: 1.1073402585708882
+DEBUG PREDICTION: Predizione fallback per indice 51: 1.456695067380055
+DEBUG PREDICTION: Predizione fallback per indice 52: 0.9173810234984647
+DEBUG PREDICTION: Predizione fallback per indice 53: 1.5641915027869049
+DEBUG PREDICTION: Predizione fallback per indice 54: 1.139363764179022
+DEBUG PREDICTION: Predizione fallback per indice 55: 1.4685531277358674
+DEBUG PREDICTION: Predizione fallback per indice 56: 1.019744813464439
+DEBUG PREDICTION: Predizione fallback per indice 57: 1.4758703078022786
+DEBUG PREDICTION: Predizione fallback per indice 58: 0.9729181950017802
+DEBUG PREDICTION: Predizione fallback per indice 59: 1.2254708930012765
+DEBUG PREDICTION: Predizione fallback per indice 60: 1.6810264477673735
+DEBUG PREDICTION: Predizione fallback per indice 61: 1.1621705321636575
+DEBUG PREDICTION: Predizione fallback per indice 62: 1.1465382046488206
+DEBUG PREDICTION: Predizione fallback per indice 63: 1.4057627792334058
+DEBUG PREDICTION: Predizione fallback per indice 64: 1.1658425381807107
+DEBUG PREDICTION: Predizione fallback per indice 65: 1.3940125554382587
+DEBUG PREDICTION: Predizione fallback per indice 66: 1.5673817235418233
+DEBUG PREDICTION: Predizione fallback per indice 67: 0.9333997750413744
+DEBUG PREDICTION: Predizione fallback per indice 68: 1.2598270710692328
+DEBUG PREDICTION: Predizione fallback per indice 69: 1.2761058725366659
+DEBUG PREDICTION: Predizione fallback per indice 70: 1.3837101178959312
+DEBUG PREDICTION: Predizione fallback per indice 71: 1.6133984264649153
+DEBUG PREDICTION: Predizione fallback per indice 72: 1.0111792036791947
+DEBUG PREDICTION: Predizione fallback per indice 73: 1.3087233106147338
+DEBUG PREDICTION: Predizione fallback per indice 74: 0.9354211942463345
+DEBUG PREDICTION: Predizione fallback per indice 75: 1.1287462453171453
+DEBUG PREDICTION: Predizione fallback per indice 76: 1.1396175205358272
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:23] "GET /api/charts/prediction?hours=30 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:24] "GET /settings HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:24] "GET /api/settings/current HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:24] "POST /api/settings/email HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:26] "POST /api/settings/threshold HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:27] "GET /predictions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:27] "GET /api/settings/current HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:27] "GET /api/settings/current HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:27] "GET /api/charts/prediction?hours=1 HTTP/1.1" 200 -
+DEBUG PREDICTION: Predizione fallback per indice 77: 1.3422258571740426
+DEBUG PREDICTION: Predizione fallback per indice 78: 1.2685261702557966
+DEBUG PREDICTION: Predizione fallback per indice 79: 0.9729203141276616
+DEBUG PREDICTION: Predizione fallback per indice 80: 1.0905291712477647
+DEBUG PREDICTION: Predizione fallback per indice 81: 1.2611344995570606
+DEBUG PREDICTION: Predizione fallback per indice 82: 1.3758405875222703
+DEBUG PREDICTION: Predizione fallback per indice 83: 1.2722629649961918
+DEBUG PREDICTION: Predizione fallback per indice 84: 1.0726207049148955
+DEBUG PREDICTION: Predizione fallback per indice 85: 1.1854765779053609
+DEBUG PREDICTION: Predizione fallback per indice 86: 1.3849474128422454
+DEBUG PREDICTION: Predizione fallback per indice 87: 0.7361214181802286
+DEBUG PREDICTION: Predizione fallback per indice 88: 1.0962866438927923
+DEBUG PREDICTION: Predizione fallback per indice 89: 1.4539197452309345
+DEBUG PREDICTION: Predizione fallback per indice 90: 1.048275872576176
+DEBUG PREDICTION: Predizione fallback per indice 91: 1.1380224402455779
+DEBUG PREDICTION: Predizione fallback per indice 92: 1.1247890317479006
+DEBUG PREDICTION: Predizione fallback per indice 93: 1.035572079939795
+DEBUG PREDICTION: Predizione fallback per indice 94: 0.7007030709795069
+DEBUG PREDICTION: Predizione fallback per indice 95: 1.3777173043149975
+DEBUG PREDICTION: Predizione fallback per indice 96: 1.0416361111013137
+DEBUG PREDICTION: Predizione fallback per indice 97: 1.2050188441085152
+DEBUG PREDICTION: Predizione fallback per indice 98: 1.4425528497999514
+DEBUG PREDICTION: Predizione fallback per indice 99: 1.2787994584971512
+DEBUG PREDICTION: Predizione fallback per indice 100: 1.4662978767673698
+DEBUG PREDICTION: Predizione fallback per indice 101: 1.2711322777305512
+DEBUG PREDICTION: Predizione fallback per indice 102: 1.134726484503784
+DEBUG PREDICTION: Predizione fallback per indice 103: 1.3866061097401554
+DEBUG PREDICTION: Predizione fallback per indice 104: 1.563418393792542
+DEBUG PREDICTION: Predizione fallback per indice 105: 1.1387239781980418
+DEBUG PREDICTION: Predizione fallback per indice 106: 1.391160603725289
+DEBUG PREDICTION: Predizione fallback per indice 107: 1.3178769094991072
+DEBUG PREDICTION: Predizione fallback per indice 108: 1.1860548218456912
+DEBUG PREDICTION: Creato DataFrame predizioni con 90 righe
+DEBUG PREDICTION: Allerte previste: 0/90 (soglia: 4.0%)
+DEBUG PREDICTION: Aggiungo 19 dati storici al grafico
+DEBUG PREDICTION: Aggiungo 90 predizioni al grafico
+DEBUG PREDICTION: Statistiche predizioni: {'avg_prediction': 1.2219728385109847, 'max_prediction': 1.6810264477673735, 'min_prediction': 0.7007030709795069, 'alerts_predicted': 0, 'avg_confidence': 33.11111111111111, 'prediction_horizon': '90 righe future', 'based_on_cloud_data': True, 'last_real_value': 1.31, 'last_row_index': 18, 'alert_threshold': 4.0, 'data_source': 'CLOUD_ONLY'}
+DEBUG PREDICTION: Conversione JSON del grafico completata
+DEBUG PREDICTION: Ritorno risultati completi
+Ricevuti dati: riga 19
+Ricevuti dati: riga 20
+Settings salvati: soglia=1.5
+Ricevuti dati: riga 21
+Settings salvati: soglia=1.5
+Soglia allerta aggiornata a: 1.5%
+Ricevuti dati: riga 22
+DEBUG PREDICTION: Avvio creazione grafici predizioni per 1 ore
+Caricati 23 campioni da Firestore in ordine cronologico di invio
+Range row_index: da 0 a 22
+DEBUG PREDICTION: Caricati 23 campioni dal cloud
+DEBUG PREDICTION: Ultimo row_index: 22, Soglia: 1.5
+DEBUG PREDICTION: Genero 3 predizioni future
+DEBUG PREDICTION: Predizione fallback per indice 23: 1.067371599401811
+DEBUG PREDICTION: Predizione fallback per indice 24: 0.6581286306615695
+DEBUG PREDICTION: Predizione fallback per indice 25: 1.3264434920027972
+DEBUG PREDICTION: Creato DataFrame predizioni con 3 righe
+DEBUG PREDICTION: Allerte previste: 0/3 (soglia: 1.5%)
+DEBUG PREDICTION: Aggiungo 23 dati storici al grafico
+DEBUG PREDICTION: Aggiungo 3 predizioni al grafico
+DEBUG PREDICTION: Statistiche predizioni: {'avg_prediction': 1.0173145740220593, 'max_prediction': 1.3264434920027972, 'min_prediction': 0.6581286306615695, 'alerts_predicted': 0, 'avg_confidence': 90.0, 'prediction_horizon': '3 righe future', 'based_on_cloud_data': True, 'last_real_value': 1.31, 'last_row_index': 22, 'alert_threshold': 1.5, 'data_source': 'CLOUD_ONLY'}
+DEBUG PREDICTION: Conversione JSON del grafico completata
+DEBUG PREDICTION: Ritorno risultati completi
+Ricevuti dati: riga 23
+Ricevuti dati: riga 24
+Ricevuti dati: riga 25
+DEBUG PREDICTION: Avvio creazione grafici predizioni per 30 ore
+Caricati 26 campioni da Firestore in ordine cronologico di invio
+Range row_index: da 0 a 25
+DEBUG PREDICTION: Caricati 26 campioni dal cloud
+DEBUG PREDICTION: Ultimo row_index: 25, Soglia: 1.5
+DEBUG PREDICTION: Genero 90 predizioni future
+DEBUG PREDICTION: Predizione fallback per indice 26: 1.4329591416076493
+DEBUG PREDICTION: Predizione fallback per indice 27: 1.2136073176767124
+DEBUG PREDICTION: Predizione fallback per indice 28: 1.1529988875689112
+DEBUG PREDICTION: Predizione fallback per indice 29: 1.3774892155431675
+DEBUG PREDICTION: Predizione fallback per indice 30: 0.8136803535634743
+DEBUG PREDICTION: Predizione fallback per indice 31: 1.3832345085086248
+DEBUG PREDICTION: Predizione fallback per indice 32: 0.9448515746238855
+DEBUG PREDICTION: Predizione fallback per indice 33: 1.1286294532442485
+DEBUG PREDICTION: Predizione fallback per indice 34: 1.1470183421884803
+DEBUG PREDICTION: Predizione fallback per indice 35: 1.523268995013376
+DEBUG PREDICTION: Predizione fallback per indice 36: 0.9747836707562747
+DEBUG PREDICTION: Predizione fallback per indice 37: 1.307237600714689
+DEBUG PREDICTION: Predizione fallback per indice 38: 1.2912296388124274
+DEBUG PREDICTION: Predizione fallback per indice 39: 0.9301090170596948
+DEBUG PREDICTION: Predizione fallback per indice 40: 1.0239345767178751
+DEBUG PREDICTION: Predizione fallback per indice 41: 1.4296708481210878
+DEBUG PREDICTION: Predizione fallback per indice 42: 1.2354144840451038
+DEBUG PREDICTION: Predizione fallback per indice 43: 0.8115936823260601
+DEBUG PREDICTION: Predizione fallback per indice 44: 1.5962020992115726
+DEBUG PREDICTION: Predizione fallback per indice 45: 1.489744905654291
+DEBUG PREDICTION: Predizione fallback per indice 46: 0.8740138729096985
+DEBUG PREDICTION: Predizione fallback per indice 47: 1.2464270227862753
+DEBUG PREDICTION: Predizione fallback per indice 48: 0.9537559426602547
+DEBUG PREDICTION: Predizione fallback per indice 49: 1.229616908472253
+DEBUG PREDICTION: Predizione fallback per indice 50: 1.5146930020959735
+DEBUG PREDICTION: Predizione fallback per indice 51: 1.1263636458709316
+DEBUG PREDICTION: Predizione fallback per indice 52: 1.2618916049585354
+DEBUG PREDICTION: Predizione fallback per indice 53: 1.3475078258812168
+DEBUG PREDICTION: Predizione fallback per indice 54: 1.4437875345706452
+DEBUG PREDICTION: Predizione fallback per indice 55: 1.513336876832343
+DEBUG PREDICTION: Predizione fallback per indice 56: 1.5262205604499481
+DEBUG PREDICTION: Predizione fallback per indice 57: 1.24891919074098
+DEBUG PREDICTION: Predizione fallback per indice 58: 1.2779773130186
+DEBUG PREDICTION: Predizione fallback per indice 59: 1.0462828747393949
+DEBUG PREDICTION: Predizione fallback per indice 60: 1.482650005963225
+DEBUG PREDICTION: Predizione fallback per indice 61: 1.5857406454427663
+DEBUG PREDICTION: Predizione fallback per indice 62: 1.6753018431525473
+DEBUG PREDICTION: Predizione fallback per indice 63: 1.0006334629951947
+DEBUG PREDICTION: Predizione fallback per indice 64: 1.0246101380562302
+DEBUG PREDICTION: Predizione fallback per indice 65: 1.1638902458670672
+DEBUG PREDICTION: Predizione fallback per indice 66: 0.7678010932372881
+DEBUG PREDICTION: Predizione fallback per indice 67: 1.4278238717053278
+DEBUG PREDICTION: Predizione fallback per indice 68: 1.4179522443883124
+DEBUG PREDICTION: Predizione fallback per indice 69: 1.0710954501603938
+DEBUG PREDICTION: Predizione fallback per indice 70: 1.0393487853216583
+DEBUG PREDICTION: Predizione fallback per indice 71: 0.996007544655675
+DEBUG PREDICTION: Predizione fallback per indice 72: 1.011520873393196
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:30] "GET /api/charts/prediction?hours=30 HTTP/1.1" 200 -
+DEBUG PREDICTION: Predizione fallback per indice 73: 1.2473643724895087
+DEBUG PREDICTION: Predizione fallback per indice 74: 1.332229770911818
+DEBUG PREDICTION: Predizione fallback per indice 75: 1.6277314553596927
+DEBUG PREDICTION: Predizione fallback per indice 76: 1.2244225629766565
+DEBUG PREDICTION: Predizione fallback per indice 77: 1.3250776807487863
+DEBUG PREDICTION: Predizione fallback per indice 78: 0.6294684426893696
+DEBUG PREDICTION: Predizione fallback per indice 79: 1.1746212171971322
+DEBUG PREDICTION: Predizione fallback per indice 80: 1.20697277471124
+DEBUG PREDICTION: Predizione fallback per indice 81: 1.3971626240550674
+DEBUG PREDICTION: Predizione fallback per indice 82: 1.243186302941611
+DEBUG PREDICTION: Predizione fallback per indice 83: 0.9989533461061888
+DEBUG PREDICTION: Predizione fallback per indice 84: 1.069036187643043
+DEBUG PREDICTION: Predizione fallback per indice 85: 1.3085939281678942
+DEBUG PREDICTION: Predizione fallback per indice 86: 1.4312601957529183
+DEBUG PREDICTION: Predizione fallback per indice 87: 0.5991883843526872
+DEBUG PREDICTION: Predizione fallback per indice 88: 1.1888043429981745
+DEBUG PREDICTION: Predizione fallback per indice 89: 1.198321018062158
+DEBUG PREDICTION: Predizione fallback per indice 90: 1.0587806464681213
+DEBUG PREDICTION: Predizione fallback per indice 91: 0.8987294769620042
+DEBUG PREDICTION: Predizione fallback per indice 92: 1.2840566849028883
+DEBUG PREDICTION: Predizione fallback per indice 93: 0.8225238156836222
+DEBUG PREDICTION: Predizione fallback per indice 94: 1.0583731424045804
+DEBUG PREDICTION: Predizione fallback per indice 95: 1.1483330689576532
+DEBUG PREDICTION: Predizione fallback per indice 96: 1.3068794775160308
+DEBUG PREDICTION: Predizione fallback per indice 97: 1.2085324377316093
+DEBUG PREDICTION: Predizione fallback per indice 98: 1.2968237688040083
+DEBUG PREDICTION: Predizione fallback per indice 99: 1.2588080820731669
+DEBUG PREDICTION: Predizione fallback per indice 100: 1.465146952284051
+DEBUG PREDICTION: Predizione fallback per indice 101: 1.1220036773217816
+DEBUG PREDICTION: Predizione fallback per indice 102: 1.1609207591623014
+DEBUG PREDICTION: Predizione fallback per indice 103: 1.0715760457416228
+DEBUG PREDICTION: Predizione fallback per indice 104: 1.255584077474936
+DEBUG PREDICTION: Predizione fallback per indice 105: 1.0689047884487741
+DEBUG PREDICTION: Predizione fallback per indice 106: 1.607457629280984
+DEBUG PREDICTION: Predizione fallback per indice 107: 1.3302652731385798
+DEBUG PREDICTION: Predizione fallback per indice 108: 1.3417053431279617
+DEBUG PREDICTION: Predizione fallback per indice 109: 1.3820059692923299
+DEBUG PREDICTION: Predizione fallback per indice 110: 0.9920796918321995
+DEBUG PREDICTION: Predizione fallback per indice 111: 1.3926016885146357
+DEBUG PREDICTION: Predizione fallback per indice 112: 1.078660016710929
+DEBUG PREDICTION: Predizione fallback per indice 113: 1.056792680965129
+DEBUG PREDICTION: Predizione fallback per indice 114: 0.9724243015979097
+DEBUG PREDICTION: Predizione fallback per indice 115: 1.5466946509229904
+DEBUG PREDICTION: Creato DataFrame predizioni con 90 righe
+DEBUG PREDICTION: Allerte previste: 10/90 (soglia: 1.5%)
+DEBUG PREDICTION: Aggiungo 26 dati storici al grafico
+DEBUG PREDICTION: Aggiungo 90 predizioni al grafico
+DEBUG PREDICTION: Statistiche predizioni: {'avg_prediction': 1.2096876383085364, 'max_prediction': 1.6753018431525473, 'min_prediction': 0.5991883843526872, 'alerts_predicted': 10, 'avg_confidence': 33.11111111111111, 'prediction_horizon': '90 righe future', 'based_on_cloud_data': True, 'last_real_value': 1.31, 'last_row_index': 25, 'alert_threshold': 1.5, 'data_source': 'CLOUD_ONLY'}
+DEBUG PREDICTION: Conversione JSON del grafico completata
+DEBUG PREDICTION: Ritorno risultati completi
+Ricevuti dati: riga 26
+Ricevuti dati: riga 27
+Ricevuti dati: riga 28
+Ricevuti dati: riga 29
+Ricevuti dati: riga 30
+Ricevuti dati: riga 31
+Ricevuti dati: riga 32
+Ricevuti dati: riga 33
+Ricevuti dati: riga 34
+Ricevuti dati: riga 35
+Ricevuti dati: riga 36
+Ricevuti dati: riga 37
+Ricevuti dati: riga 38
+Ricevuti dati: riga 39
+Ricevuti dati: riga 40
+Ricevuti dati: riga 41
+Ricevuti dati: riga 42
+Ricevuti dati: riga 43
+Ricevuti dati: riga 44
+Ricevuti dati: riga 45
+Ricevuti dati: riga 46
+Ricevuti dati: riga 47
+Ricevuti dati: riga 48
+Ricevuti dati: riga 49
+Ricevuti dati: riga 50
+Ricevuti dati: riga 51
+Ricevuti dati: riga 52
+DEBUG PREDICTION: Avvio creazione grafici predizioni per 30 ore
+Ricevuti dati: riga 53
+Caricati 53 campioni da Firestore in ordine cronologico di invio
+Range row_index: da 0 a 52
+DEBUG PREDICTION: Caricati 53 campioni dal cloud
+DEBUG PREDICTION: Ultimo row_index: 52, Soglia: 1.5
+DEBUG PREDICTION: Genero 90 predizioni future
+DEBUG PREDICTION: Predizione fallback per indice 53: 1.3686274609973963
+DEBUG PREDICTION: Predizione fallback per indice 54: 0.9906111633619605
+DEBUG PREDICTION: Predizione fallback per indice 55: 1.0431448793974063
+DEBUG PREDICTION: Predizione fallback per indice 56: 1.2470718383718016
+DEBUG PREDICTION: Predizione fallback per indice 57: 1.2610851914251195
+DEBUG PREDICTION: Predizione fallback per indice 58: 1.1742101992596572
+DEBUG PREDICTION: Predizione fallback per indice 59: 1.4087947300685546
+DEBUG PREDICTION: Predizione fallback per indice 60: 1.1258859078997223
+DEBUG PREDICTION: Predizione fallback per indice 61: 1.4980758758032446
+DEBUG PREDICTION: Predizione fallback per indice 62: 1.3153115475123618
+DEBUG PREDICTION: Predizione fallback per indice 63: 1.4181774189248257
+DEBUG PREDICTION: Predizione fallback per indice 64: 1.0002145566663505
+DEBUG PREDICTION: Predizione fallback per indice 65: 1.4240520366531806
+DEBUG PREDICTION: Predizione fallback per indice 66: 1.1488928535346619
+DEBUG PREDICTION: Predizione fallback per indice 67: 1.2364320635688708
+DEBUG PREDICTION: Predizione fallback per indice 68: 1.136131150951904
+DEBUG PREDICTION: Predizione fallback per indice 69: 0.9878669766709538
+DEBUG PREDICTION: Predizione fallback per indice 70: 1.070947668546988
+DEBUG PREDICTION: Predizione fallback per indice 71: 1.1103885259269808
+DEBUG PREDICTION: Predizione fallback per indice 72: 1.0791121977829616
+DEBUG PREDICTION: Predizione fallback per indice 73: 1.3441057125068834
+DEBUG PREDICTION: Predizione fallback per indice 74: 1.1353168613449742
+DEBUG PREDICTION: Predizione fallback per indice 75: 1.373464349414102
+DEBUG PREDICTION: Predizione fallback per indice 76: 1.1594456175346903
+DEBUG PREDICTION: Predizione fallback per indice 77: 1.3249747142240085
+DEBUG PREDICTION: Predizione fallback per indice 78: 1.2147098649846717
+DEBUG PREDICTION: Predizione fallback per indice 79: 0.9919829991244773
+DEBUG PREDICTION: Predizione fallback per indice 80: 1.6056081967763454
+DEBUG PREDICTION: Predizione fallback per indice 81: 0.9378977580324657
+DEBUG PREDICTION: Predizione fallback per indice 82: 1.1844349326343686
+DEBUG PREDICTION: Predizione fallback per indice 83: 1.131381584164307
+DEBUG PREDICTION: Predizione fallback per indice 84: 1.3947934551611765
+DEBUG PREDICTION: Predizione fallback per indice 85: 1.3500782785693173
+DEBUG PREDICTION: Predizione fallback per indice 86: 1.0147032041273008
+DEBUG PREDICTION: Predizione fallback per indice 87: 1.2585870870975238
+DEBUG PREDICTION: Predizione fallback per indice 88: 0.948371119130256
+DEBUG PREDICTION: Predizione fallback per indice 89: 1.277519346795077
+DEBUG PREDICTION: Predizione fallback per indice 90: 1.0206795875191097
+DEBUG PREDICTION: Predizione fallback per indice 91: 1.0460324495525428
+DEBUG PREDICTION: Predizione fallback per indice 92: 1.37746298512951
+DEBUG PREDICTION: Predizione fallback per indice 93: 1.0756777448730581
+DEBUG PREDICTION: Predizione fallback per indice 94: 0.8770833816613595
+DEBUG PREDICTION: Predizione fallback per indice 95: 1.1357575019529613
+DEBUG PREDICTION: Predizione fallback per indice 96: 1.5489756282073484
+DEBUG PREDICTION: Predizione fallback per indice 97: 1.0579417959191737
+DEBUG PREDICTION: Predizione fallback per indice 98: 0.8930554762373939
+DEBUG PREDICTION: Predizione fallback per indice 99: 0.752187060288523
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:57] "GET /api/charts/prediction?hours=30 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:59] "GET /dashboard HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Sep/2025 23:22:59] "GET /api/charts/realtime HTTP/1.1" 200 -
